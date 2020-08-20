@@ -1,6 +1,6 @@
 locals {
   # Use existing (via data source) or create new zone (will fail validation, if zone is not reachable)
-  use_existing_route53_zone = true
+  use_existing_route53_zone = false
 
   domain = var.domain_name
 
@@ -22,7 +22,7 @@ resource "aws_route53_zone" "this" {
 
 module "acm" {
   source  = "terraform-aws-modules/acm/aws" # this could be made absolute as recommended in the tf docs
-  version = "2.10.0"
+  version = "2.11.0"
 
   domain_name = local.domain_name
   zone_id     = coalescelist(data.aws_route53_zone.this.*.zone_id, aws_route53_zone.this.*.zone_id)[0]
