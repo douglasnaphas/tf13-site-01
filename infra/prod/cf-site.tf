@@ -1,6 +1,6 @@
 module "s3-cf-site" {
-  source  = "douglasnaphas/s3-cf-site/aws"
-  version = "0.3.0"
+  source = "github.com/douglasnaphas/terraform-aws-s3-cf-site"
+  ref    = "depend-on-cert"
   # insert the 5 required variables here
   bucket_name = var.bucket_name
   cert_domain = var.cert_domain
