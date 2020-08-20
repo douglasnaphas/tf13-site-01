@@ -1,0 +1,5 @@
+bucket_name = "tf13.douglasnaphas.com-origin"
+cert_domain = "tf13.douglasnaphas.com"
+domain_name = "tf13.douglasnaphas.com"
+ci_user_arn = "arn:aws:iam::050877257577:user/admin_douglas_naphas"
+zone_name   = "douglasnaphas.com"
