@@ -1,11 +1,13 @@
 locals {
   # Use existing (via data source) or create new zone (will fail validation, if zone is not reachable)
-  use_existing_route53_zone = false
+  use_existing_route53_zone = true
 
-  domain = var.domain_name
+  domain = var.cert_domain
+  site   = var.domain_name
 
   # Removing trailing dot from domain - just to be sure :)
   domain_name = trimsuffix(local.domain, ".")
+  site_name   = trimsuffix(local.site, ".")
 }
 
 data "aws_route53_zone" "this" {
@@ -28,6 +30,8 @@ module "acm" {
   zone_id     = coalescelist(data.aws_route53_zone.this.*.zone_id, aws_route53_zone.this.*.zone_id)[0]
 
   subject_alternative_names = [
+    "${local.site_name}",
+    "*.${local.site_name}",
     "*.${local.domain_name}",
   ]
 
