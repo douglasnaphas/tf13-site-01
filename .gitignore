@@ -27,3 +27,12 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+
+# When using remote state with Terraform Cloud, we can't specify an input
+# variable on the command line with -var='varname=varval'. Setting the variable
+# with TV_VAR_varname=varval doesn't seem to work with remote state, either.
+# Use LOCAL.auto.tfvars to set variables that are required but that will be
+# passed in as Terraform variables in Terraform Cloud. LOCAL.auto.tfvars has
+# a lexically early name, so that its values will be overridden by any values
+# set in, for example, a directory's file called prod.auto.tfvars.
+LOCAL.auto.tfvars

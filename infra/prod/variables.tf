@@ -22,3 +22,17 @@ variable "zone_name" {
   description = "The zone_name input for douglasnaphas/s3-cf-site/aws"
   type        = string
 }
+
+variable "repo_owner" {
+  type = string
+}
+
+variable "repo_name" {
+  type = string
+}
+
+variable "repo_branch" {
+  type = string
+}
+
+

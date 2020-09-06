@@ -18,3 +18,7 @@ output "acm_validation_domains" {
 output "acm_validation_route53_record_fqdns" {
   value = module.acm.validation_route53_record_fqdns
 }
+
+output "test_output" {
+  value = var.repo_name
+}
